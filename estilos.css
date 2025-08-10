@@ -1,0 +1,282 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 1em;
+}
+
+/* Contenedor principal */
+.contenedor {
+  background: white;
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 600px;
+  animation: aparecer 0.6s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Títulos */
+.contenedor h2 {
+  text-align: center;
+  color: #4a148c;
+  margin-bottom: 0.3em;
+}
+
+.contenedor h2:nth-child(1) {
+  font-size: 1.5rem;
+}
+
+.contenedor h2:nth-child(2),
+.contenedor h2:nth-child(3) {
+  font-size: 1.2rem;
+  color: #6a1b9a;
+}
+
+/* Campos de texto y select */
+input[type="text"],
+select {
+  padding: 0.8em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+
+input:focus, select:focus {
+  border-color: #7e57c2;
+  outline: none;
+}
+
+/* Preguntas tipo tarjeta */
+.pregunta {
+  background: #f9f9ff;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-top: 0.5em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pregunta label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+/* Opciones de radio */
+.pregunta input[type="radio"] {
+  margin-right: 0.3em;
+}
+
+.pregunta input[type="radio"] + label {
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+/* Botón principal */
+button[type="submit"] {
+  background-color: #7e57c2;
+  color: white;
+  padding: 0.9em;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #5e35b1;
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-contenido {
+  background: white;
+  padding: 2em;
+  border-radius: 12px;
+  max-width: 350px;
+  text-align: center;
+  animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+#cerrar-modal {
+  padding: 0.6em 1.2em;
+  background: #7e57c2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+#cerrar-modal:hover {
+  background: #5e35b1;
+}
+
+/* Adaptación para móviles y tablets */
+@media (max-width: 768px) {
+  .contenedor {
+    padding: 1.5em;
+  }
+  .contenedor h2 {
+    font-size: 1rem;
+  }
+  button[type="submit"], #cerrar-modal {
+    font-size: 0.9rem;
+  }
+}
+/* para que gire circulo al momento de enviar */
+.spinner {
+  border: 3px solid #f3f3f3; /* gris claro */
+  border-top: 3px solid #3498db; /* azul */
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*BOTON Y VENTANA PARA ENVIAR*/
+/* Fondo del modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Contenedor del contenido del modal */
+.modal-contenido {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+/* Texto de mensaje principal */
+#modal-mensaje {
+  font-size: 18px;
+  font-weight: 600;
+  color: green;
+  margin-bottom: 10px;
+}
+
+/* Puntaje */
+#modal-puntaje {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#puntaje-valor {
+  font-weight: bold;
+  color: #2980b9;
+}
+
+/* Botones */
+#cerrar-modal, #descargarPDF {
+  margin: 8px 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s ease-in-out;
+}
+
+/* Botón cerrar */
+#cerrar-modal {
+  background: #888;
+}
+
+#cerrar-modal:hover {
+  background: #666;
+}
+
+/* Botón descargar PDF */
+#descargarPDF {
+  background: #2980b9;
+}
+
+#descargarPDF:hover {
+  background: #1f6694;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsividad */
+@media (max-width: 480px) {
+  .modal-contenido {
+    padding: 15px;
+    font-size: 14px;
+  }
+  
+  #cerrar-modal, #descargarPDF {
+    width: 100%;
+    margin: 6px 0;
+  }
+}
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario Estudiantil</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="contenedor">
+    <h2>AUTOEVALUACIÓN</h2>
+    <h2>EDUCACIÓN MUSICAL</h2>
+    <h2>Prof. Humberto Yupanqui C.</h2>
+      <form id="formulario">
+        <label>Cedula Identidad (Sin extensión):</label>
+        <input type="text" id="ci" required>
+      
+        <label>Apellido Paterno:</label>
+        <input type="text" id="apellidoPaterno" required>
+      
+        <label>Apellido Materno:</label>
+        <input type="text" id="apellidoMaterno" required>
+      
+        <label>Nombres:</label>
+        <input type="text" id="nombres" required>
+      
+        <label>Curso:</label>
+        <select id="curso" required>
+          <option value="">Seleccione un curso</option>
+          <option>1RO SECUNDARIA</option>
+          <option>2DO SECUNDARIA</option>
+          <option>3RO SECUNDARIA</option>
+          <option>4TO SECUNDARIA</option>
+          <option>5TO SECUNDARIA</option>
+          <option>6TO SECUNDARIA</option>
+        </select>
+      
+        <div class="preguntaA">
+      
+          <label>ESTIMADO(A):</br>
+            ESTUDIANTE, REALIZA UNA VALORACIÓN CRÍTICA, REFLEXIVA Y HONESTA DE TU DESEMPEÑO DURANTE EL TRIMESTRE.
+          </label>
+        </div>
+      
+        <div class="pregunta">
+      
+          <label>En este trimestre en mi desarrollo personal y mis estudios he sido una persona:</label>
+        </div>
+      
+        <div class="pregunta">
+      
+          <label>1. Asisto puntualmente a las clases de música:</label>
+          <br/> <br/>
+          <input type="radio" name="p1" value="1" required> Sí<br/>
+          <input type="radio" name="p1" value="0.5"> A veces<br/>
+          <input type="radio" name="p1" value="0"> No
+        </div>
+      
+        <div class="pregunta">
+          <label>2. Soy responsable en la entrega de tareas y materiales:</label>
+          <br/><br/>
+          <input type="radio" name="p2" value="1" required> Sí<br/>
+          <input type="radio" name="p2" value="0.5"> A veces<br/>
+          <input type="radio" name="p2" value="0"> No
+        </div>
+      
+        <div class="pregunta">
+          <label>3. Manifiesto respeto hacia los(as) compañeros(as) y maestros en todas las clases:</label>
+          <br/><br/>
+          <input type="radio" name="p3" value="1" required> Sí<br/>
+          <input type="radio" name="p3" value="0.5"> A veces<br/>
+          <input type="radio" name="p3" value="0"> No
+        </div>
+      
+        <div class="pregunta">
+          <label>4. Demuestro interés por aprender los contenidos del área de Educación Musical:</label>
+          <br/> <br/>
+          <input type="radio" name="p4" value="1" required> Sí<br/>
+          <input type="radio" name="p4" value="0.5"> A veces<br/>
+          <input type="radio" name="p4" value="0"> No
+        </div>
+      
+        <div class="pregunta">
+          <label>5. Participo activamente en actividades grupales e individuales propuestas en la clase (interpretacion instrumental, exposiciones y danzas):</label>
+          <br/> <br/>
+          <input type="radio" name="p5" value="1" required> Sí<br/>
+          <input type="radio" name="p5" value="0.5"> A veces<br/>
+          <input type="radio" name="p5" value="0"> No
+        </div>
+    
+        <center>
+          <button type="submit" id="btnEnviar">Guardar y Enviar</button>
+          <div id="spinner" class="spinner" style="display:none;"></div>
+        </center>
+        
+      </form>
+<!-- Modal para mostrar mensaje, puntaje y opciones -->
+<div id="modal" class="modal" 
+     style="display:none; position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index: 9999;">
+  
+  <div class="modal-contenido" 
+       style="background:#fff; padding: 20px 30px; border-radius: 12px; max-width: 400px; text-align: center; font-family: 'Segoe UI', Tahoma, sans-serif;">
+    
+    <p id="modal-mensaje" style="font-size:18px; font-weight:600; color:green; margin-bottom:10px;">
+      ✅ ¡Formulario enviado correctamente!
+    </p>
+
+    <!-- Puntaje dinámico -->
+    <p id="modal-puntaje" style="font-size:16px; margin-bottom:15px; color:#333;">
+      Tu puntaje: <span id="puntaje-valor" style="font-weight:bold; color:#2980b9;">0</span> puntos
+    </p>
+
+    <button id="cerrar-modal" 
+            style="margin: 8px 10px; padding: 8px 16px; border:none; border-radius:6px; background:#888; color:#fff; cursor:pointer;">
+      Cerrar
+    </button>
+
+    <button id="descargarPDF" 
+            style="margin: 8px 10px; padding: 8px 16px; border:none; border-radius:6px; background:#2980b9; color:#fff; cursor:pointer;">
+      Descargar PDF
+    </button>
+  </div>
+</div>
+   
+    <p id="respuesta" class="mensaje"></p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  
+  <script src="script.js"></script>
+
+</body>
+</html>
