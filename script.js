@@ -132,7 +132,7 @@ function generarPDF() {
   // ENCABEZADO
   // ----------------------
   doc.setFontSize(16);
-  doc.text('AUTOEVALUACIÓN ESTUDIANTIL', 105, 15, { align: 'center' });
+  doc.text('AUTOEVALUACIÓN 3ER TRIMESTRE', 105, 15, { align: 'center' });
 
   const ahora = new Date();
   const fecha = ahora.toLocaleDateString('es-ES');
@@ -203,5 +203,6 @@ style.textContent = `
   100% { transform: rotate(360deg);}
 }`;
 document.head.appendChild(style);
+
 
 
