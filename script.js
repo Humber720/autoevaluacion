@@ -20,7 +20,7 @@ sendFormBtn.parentNode.insertBefore(spinner, sendFormBtn.nextSibling);
 
 let datosEnviados = {};
 
-const urlSheetBest = "https://api.sheetbest.com/sheets/a0d833dc-39c4-455d-90d2-842ed1937e36";
+const urlSheetBest = "https://api.sheetbest.com/sheets/29c134da-7a29-46b1-8e98-b8f3589911e4";
 
 // ----------------------
 // ENVIAR FORMULARIO CON VALIDACIÓN CI DUPLICADA
@@ -203,3 +203,4 @@ style.textContent = `
   100% { transform: rotate(360deg);}
 }`;
 document.head.appendChild(style);
+
