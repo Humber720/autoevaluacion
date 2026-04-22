@@ -20,7 +20,7 @@ sendFormBtn.parentNode.insertBefore(spinner, sendFormBtn.nextSibling);
 
 let datosEnviados = {};
 
-const urlSheetBest = "https://api.sheetbest.com/sheets/a6460d85-55f7-47f1-b25a-31a1748246f2";
+const urlSheetBest = "https://api.sheetbest.com/sheets/609ed099-0205-45d9-9916-4b04e08039cd";
 
 // ----------------------
 // ENVIAR FORMULARIO CON VALIDACIÓN CI DUPLICADA
@@ -128,23 +128,34 @@ function generarPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
+
   // ----------------------
-  // ENCABEZADO
+  // ENCABEZADO CORREGIDO
   // ----------------------
+  doc.setFont("helvetica", "bold");
+
   doc.setFontSize(16);
-  doc.text('AUTOEVALUACIÓN 3ER TRIMESTRE', 105, 15, { align: 'center' });
+  doc.text('AUTOEVALUACIÓN - 1ER TRIMESTRE', 105, 12, { align: 'center' });
+
+  doc.setFontSize(13);
+  doc.text('EDUCACIÓN MUSICAL', 105, 18, { align: 'center' });
+
+  doc.setFontSize(11);
+  doc.text('Prof. Humberto Yupanqui C.', 105, 24, { align: 'center' });
+
+  doc.setFont("helvetica", "normal");
 
   const ahora = new Date();
   const fecha = ahora.toLocaleDateString('es-ES');
   const hora = ahora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
 
   doc.setFontSize(10);
-  doc.text(`Curso: ${datosEnviados.curso}`, 14, 22);
+  //doc.text(`Curso: ${datosEnviados.curso}`, 14, 22);
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const textoDerecha = `Fecha: ${fecha}   Hora: ${hora}`;
   const textWidth = doc.getTextWidth(textoDerecha);
-  doc.text(textoDerecha, pageWidth - textWidth - 14, 22);
+  doc.text(textoDerecha, pageWidth - textWidth - 14, 30);
 
   // ----------------------
   // DATOS DEL ESTUDIANTE
@@ -159,7 +170,7 @@ function generarPDF() {
   doc.autoTable({
     head: [['Campo', 'Datos']],
     body: data,
-    startY: 30,
+    startY: 35,
     styles: { fontSize: 10 }
   });
 
@@ -171,7 +182,7 @@ function generarPDF() {
     ['2. Soy responsable en la entrega de tareas y materiales:', datosEnviados.p2],
     ['3. Manifiesto respeto hacia los(as) compañeros(as) y maestros en todas las clases:', datosEnviados.p3],
     ['4. Demuestro interés por aprender los contenidos del área de Educación Musical:', datosEnviados.p4],
-    ['5. Participo activamente en actividades grupales e individuales propuestas en la clase interpretación instrumental, exposiciones y danzas:', datosEnviados.p5],
+    ['5. Participo activamente en actividades grupales e individuales propuestas en la clase interpretación instrumental, exposiciones y entonación de himnos:', datosEnviados.p5],
   ];
 
   doc.autoTable({
@@ -203,7 +214,3 @@ style.textContent = `
   100% { transform: rotate(360deg);}
 }`;
 document.head.appendChild(style);
-
-
-
-
