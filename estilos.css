@@ -1,282 +1,192 @@
-/* Reset básico */
+/* RESET */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
+/* FONDO GENERAL */
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 1em;
+  align-items: center;
 }
 
-/* Contenedor principal */
+/* CONTENEDOR */
 .contenedor {
-  background: white;
-  padding: 2em;
+  background: #ffffff;
+  padding: 25px;
   border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  width: 100%;
+  width: 95%;
   max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   animation: aparecer 0.6s ease;
 }
 
-@keyframes aparecer {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Títulos */
-.contenedor h2 {
+/* TITULOS */
+h2 {
   text-align: center;
-  color: #4a148c;
-  margin-bottom: 0.3em;
+  color: #2c3e50;
+  margin-bottom: 5px;
 }
 
-.contenedor h2:nth-child(1) {
-  font-size: 1.5rem;
+/* FORMULARIO */
+form {
+  margin-top: 15px;
 }
 
-.contenedor h2:nth-child(2),
-.contenedor h2:nth-child(3) {
-  font-size: 1.2rem;
-  color: #6a1b9a;
-}
-
-/* Campos de texto y select */
-input[type="text"],
-select {
-  padding: 0.8em;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-  width: 100%;
-}
-
-input:focus, select:focus {
-  border-color: #7e57c2;
-  outline: none;
-}
-
-/* Preguntas tipo tarjeta */
-.pregunta {
-  background: #f9f9ff;
-  padding: 1em;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  margin-top: 0.5em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.pregunta label {
-  font-weight: bold;
+/* LABELS */
+label {
   display: block;
-  margin-bottom: 0.5em;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
 }
 
-/* Opciones de radio */
-.pregunta input[type="radio"] {
-  margin-right: 0.3em;
-}
-
-.pregunta input[type="radio"] + label {
-  margin-right: 1em;
-  cursor: pointer;
-}
-
-/* Botón principal */
-button[type="submit"] {
-  background-color: #7e57c2;
-  color: white;
-  padding: 0.9em;
-  border: none;
+/* INPUTS Y SELECT */
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
   border-radius: 8px;
-  font-size: 1rem;
+  border: 2px solid #ddd;
+  outline: none;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus, select:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 8px rgba(79,172,254,0.5);
+}
+
+/* PREGUNTAS */
+.pregunta, .preguntaA {
+  background: #f8f9ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  border-left: 5px solid #4facfe;
+  transition: transform 0.2s;
+}
+
+.pregunta:hover {
+  transform: scale(1.02);
+}
+
+/* RADIOS */
+input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.2);
   cursor: pointer;
-  margin-top: 1em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button[type="submit"]:hover {
-  background-color: #5e35b1;
+/* BOTON */
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
   transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Modal */
+/* SPINNER */
+.spinner {
+  margin-top: 10px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #4facfe;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: girar 1s linear infinite;
+}
+
+/* MODAL */
 .modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  display: flex;
+  animation: fadeIn 0.3s ease;
 }
 
 .modal-contenido {
-  background: white;
-  padding: 2em;
-  border-radius: 12px;
-  max-width: 350px;
+  animation: subir 0.4s ease;
+}
+
+/* MENSAJE */
+.mensaje {
+  margin-top: 10px;
   text-align: center;
-  animation: zoomIn 0.4s ease;
+  font-weight: bold;
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-#cerrar-modal {
-  padding: 0.6em 1.2em;
-  background: #7e57c2;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 1em;
-}
-
-#cerrar-modal:hover {
-  background: #5e35b1;
-}
-
-/* Adaptación para móviles y tablets */
-@media (max-width: 768px) {
-  .contenedor {
-    padding: 1.5em;
-  }
-  .contenedor h2 {
-    font-size: 1rem;
-  }
-  button[type="submit"], #cerrar-modal {
-    font-size: 0.9rem;
-  }
-}
-/* para que gire circulo al momento de enviar */
-.spinner {
-  border: 3px solid #f3f3f3; /* gris claro */
-  border-top: 3px solid #3498db; /* azul */
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  animation: spin 0.8s linear infinite;
-  display: inline-block;
-  margin-left: 8px;
-  vertical-align: middle;
-}
-
-@keyframes spin {
+/* ANIMACIONES */
+@keyframes girar {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/*BOTON Y VENTANA PARA ENVIAR*/
-/* Fondo del modal */
-.modal {
-  display: none; /* Oculto por defecto */
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeIn 0.3s ease-in-out;
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Contenedor del contenido del modal */
-.modal-contenido {
-  background: #fff;
-  padding: 20px 30px;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  animation: scaleUp 0.3s ease-in-out;
+@keyframes subir {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* Texto de mensaje principal */
-#modal-mensaje {
-  font-size: 18px;
-  font-weight: 600;
-  color: green;
-  margin-bottom: 10px;
-}
-
-/* Puntaje */
-#modal-puntaje {
-  font-size: 16px;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-#puntaje-valor {
-  font-weight: bold;
-  color: #2980b9;
-}
-
-/* Botones */
-#cerrar-modal, #descargarPDF {
-  margin: 8px 10px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.2s ease-in-out;
-}
-
-/* Botón cerrar */
-#cerrar-modal {
-  background: #888;
-}
-
-#cerrar-modal:hover {
-  background: #666;
-}
-
-/* Botón descargar PDF */
-#descargarPDF {
-  background: #2980b9;
-}
-
-#descargarPDF:hover {
-  background: #1f6694;
-}
-
-/* Animaciones */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes scaleUp {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contenedor {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+  }
 }
 
-/* Responsividad */
 @media (max-width: 480px) {
-  .modal-contenido {
+  .contenedor {
     padding: 15px;
+  }
+
+  h2 {
     font-size: 14px;
   }
-  
-  #cerrar-modal, #descargarPDF {
-    width: 100%;
-    margin: 6px 0;
+
+  label {
+    font-size: 14px;
   }
 }
-
